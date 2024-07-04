@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ "$1" = "series" ]
+then
+  docker exec -it iplayer /bin/sh -c "get_iplayer --pid $2 --pid-recursive"
+elif [ "$1" = "pid" ]
+then
+  INP=$2
+  PID="$(echo -e "${INP}" | tr -d '[:space:]')"
+#  vpnon uk
+  docker exec -it iplayer /bin/sh -c "get_iplayer --pid $PID"
+#  vpnoff
+else
+  docker exec -it iplayer /bin/sh -c "get_iplayer --url $1"
+fi

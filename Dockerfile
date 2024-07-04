@@ -27,5 +27,7 @@ RUN wget -qO - "https://api.github.com/repos/get-iplayer/get_iplayer/releases/la
 
 COPY files/ /
 
+RUN chmod u+s /sbin/su-exec
+
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD /start
